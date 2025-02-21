@@ -42,4 +42,4 @@ Configure VS Code to use pdflatex:
         }
     ]
 }
-``
+```
