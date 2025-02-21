@@ -1,13 +1,4 @@
-%-------------------------
-% Rezume, a latex resume template for developers
-% Author : Nanu Panchamurthy
 % Based off of: https://github.com/sb2nov/resume
-% License : MIT
-
-% Hope this resume template helps you land an awesome job. If you found this helpful, please consider starring the github repo here, .
-%-------------------------
-
-
 
 %------------PACKAGES----------------
 \documentclass[a4paper,11pt]{article}
@@ -35,11 +26,9 @@
 \usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
 
 \usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
+
+\usepackage{tabularx} % grid style text items layout, for Technical Skills section %
 %-----------------------------------------
-
-\usepackage{multicol} %added for techincal skills section Kyle 3-16-22%
-
-\usepackage{tabularx}
 
 \input glyphtounicode % converts glyph names to unicode
 \pdfgentounicode=1 % ensures pdfs generated are ats readable
@@ -48,9 +37,8 @@
 \usepackage{helvet} % provides the Helvetica font
 \renewcommand{\familydefault}{\sfdefault} % sets the default font to sans-serif
 \usepackage{url} % allows you to include URLs
-% \urlstyle{same} % changes url font from default urlfont to font being used by the document
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
 %-----------------------------------------
-
 
 %----------MARGIN OPTIONS-----------------
 \pagestyle{fancy} % set page style to one configured by fancyhdr
@@ -144,7 +132,6 @@
   \end{tabular*}
 }
 
-% Kyle 2023/2/23 for double degree
 % resumeQuadHeadingPlusOne renders five elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with five elements. First colum has three elements, second column has two elements. 
 \newcommand{\resumeQuadHeadingPlusOne}[5]{
   \item
@@ -172,7 +159,6 @@
 
 
 %__________________RESUME____________________
-% You can rearrange sections in any order you may prefer
 \begin{document}
 
 %-----------CONTACT DETAILS------------------
@@ -202,18 +188,7 @@
 
 
 %--------------SKILLS------------------------
-% Add or remove resumeSectionTypes according to your needs
 \section{Technical Skills}
-% \section{Technical Skills}
-% Frontend: JavaScript/TypeScript, React, Redux, HTML, CSS
-% \newline
-% Backend: Node.js, Python, C++, AWS (Lambda, CloudFormation, DynamoDB, S3)
-% \newline
-% Databases: DynamoDB, RDS, PostgreSQL
-% \newline
-% Dev Tools
-% \newline
-% Data Analysis/Scientific: NumPy, Pandas, Matplotlib, ChartJS
 \begin{tabularx}{\textwidth}{X X X X X X}
     Frontend: & TypeScript & React & Redux & HTML & CSS \\
     Backend: & Node.js & Python & C++ & AWS Lambda & CloudFormation \\
@@ -256,19 +231,19 @@
 \section{Experience}
 \resumeHeadingListStart{}
 
-  \resumeQuadHeading{Earthview, Denver, CO}{May 2023 -- Present}
+  \resumeQuadHeading{Earthview, Denver, CO}{May 2023 -- December 2024}
   {Software Engineer}{}
     \resumeItemListStart{}
-      \resumeItem{Architected and implemented full-stack features using AWS CloudFormation, Lambda, and RDS/DynamoDB, accelerating development time by owning end-to-end feature realization.}
+      \resumeItem{Architected and developed full-stack features using AWS CloudFormation, Lambda, and RDS/DynamoDB, accelerating development time by owning end-to-end feature realization.}
       \resumeItem{Designed and built data visualization tools that increased hardware performance visibility, enabling detection of critical system issues, and facilitating communicating complex datasets to customers.}
       \resumeItem{Optimized computation-heavy simulations through C++ implementation, reducing runtime by over 95\% and substantially reducing cloud-compute costs.}
-      \resumeItem{Enhanced scientific computation code by implementing comprehensive testing, leading to less production environment runtime errors.}
+      \resumeItem{Enhanced scientific computation code by implementing comprehensive testing, leading to fewer production environment runtime errors.}
     \resumeItemListEnd{}
 
   \resumeQuadHeading{ChampionX, Boulder, CO}{January 2022 -- September 2022}
   {Data Analyst/Junior Flight Scientist}{}
     \resumeItemListStart{}
-      \resumeItem{Spearheaded revival of legacy project through comprehensive documentation and experimental validation, securing \$500K in funding and 30\% resource allocation from senior science officers.}
+      \resumeItem{Spearheaded revival of legacy drone technology project through comprehensive documentation and experimental validation, securing \$500K in funding and 30\% resource allocation from senior science officers.}
       \resumeItem{Improved experimental data analysis by implementing optimal algorithms for nonuniform time series processing and integration, resulting in significantly more accurate curve fitting and data visualization.}
       \resumeItem{Developed and deployed Python automation scripts using NumPy and Pandas for flight data analysis, including automated detection of aircraft maneuvers, reducing processing time from hours to minutes.}
       \resumeItem{Designed and implemented real-time data processing system for Above Ground Level measurements, creating an intuitive cockpit interface that enhanced flight safety and trajectory precision.}
@@ -289,17 +264,5 @@
     % {}{Aug 2013 -- May 2017}
   \resumeHeadingListEnd{}
 %---------------------------------------------
-
-
-%----------------OTHERS----------------------
-% You can add your acheivements, accolades, certifications etc. here.
-
-% \section{Certifications}
-%   \resumeItemListStart{}
-%     \resumeItem{\href{https://dummy-certification.com}{\uline{Certified Web Developer by the W3C}}}
-%     \resumeItem{\href{https://dummy-certification.com}{\uline{Microsoft Certified: Azure Developer Associate}}}
-%     \resumeItem{\href{https://dummy-certification.com}{\uline{AWS Certified Developer - Associate}}}
-%   \resumeItemListEnd{}
-%--------------------------------------------
 
 \end{document}
