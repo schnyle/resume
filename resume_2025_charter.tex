@@ -1,0 +1,271 @@
+% Based off of: https://github.com/sb2nov/resume
+
+%------------PACKAGES----------------
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{verbatim} % reimplements the "verbatim" and "verbatim*" environments
+
+\usepackage{titlesec} % provides an interface to sectioning commands i.e. custom elements
+
+\usepackage{color} % provides both foreground and background color management
+
+\usepackage{enumitem} % provides control over enumerate, itemize and description
+
+\usepackage{fancyhdr} % provides extensive facilities for constructing headers, footers and also controlling their use
+
+\usepackage{tabularx} % defines an environment tabularx, extension of "tabular" with an extra designator x, paragraph like column whose width automatically expands to fill the width of the environment
+
+\usepackage{latexsym} % provides mathematical symbols
+
+% \usepackage{marvosym} % provides martin vogel's symbol font which contains various symbols
+
+\usepackage[empty]{fullpage} % sets margins to one inch and removes headers, footers etc..
+
+\usepackage[hidelinks]{hyperref} % removes color and shadow of hyperlinks
+
+\usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
+
+\usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
+
+\usepackage{tabularx} % grid style text items layout, for Technical Skills section %
+%-----------------------------------------
+
+\input glyphtounicode % converts glyph names to unicode
+\pdfgentounicode=1 % ensures pdfs generated are ats readable
+
+%----------FONT OPTIONS-------------------
+\usepackage{helvet} % provides the Helvetica font
+\renewcommand{\familydefault}{\sfdefault} % sets the default font to sans-serif
+\usepackage{url} % allows you to include URLs
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
+%-----------------------------------------
+
+%----------MARGIN OPTIONS-----------------
+\pagestyle{fancy} % set page style to one configured by fancyhdr
+\fancyhf{} % clear all header and footer fields
+
+\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
+\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
+
+\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
+
+% origin of the document is one inch from the top and from and the left
+% oddsidemargin and evensidemargin both refer to the left margin
+% right margin is indirectly set using oddsidemargin
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+
+\addtolength{\textwidth}{1.1in} % sets width of text area in the page to one inch
+\addtolength{\textheight}{1.1in} % sets height of text area in the page to one inch
+
+\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
+\raggedright{} % makes all pages the width of current page, no extra horizontal space added
+%------------------------------------------
+
+
+%--------SECTIONING COMMANDS---------
+% \titleformat{<command>}
+%   [<shape>]{<format>}{<label>}{<sep>}
+%     {<before-code>}[<after-code>]
+
+% command is the sectioning command to be redefined
+% shape is the style of the font; scshape stands for small caps style
+% format is the format to be applied to whole title- label and text; absent here
+% label defines the label
+% sep is the horizontal separation between label and title body
+% before-code is the code to be executed before
+% after-code is the code to be executed after
+
+\titleformat{\section}
+  {\scshape\large}{}
+    {0em}{\color{black}}[\color{black}\titlerule\vspace{0pt}]
+%-------------------------------------
+
+
+%--------REDEFINITIONS----------------
+% redefines the style of the bullet point
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% redefines the underline depth to 2pt
+\renewcommand{\ULdepth}{2pt}
+%-------------------------------------
+
+
+%--------CUSTOM COMMANDS--------------
+%\vspace{} defines a vertical space of given size, modifying this in custom commands can help stretch or shrink resume to remove or add content
+
+% resumeItem renders a bullet point
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
+\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in, itemsep=-2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.15\linewidth}p{0.02\linewidth}p{0.81\linewidth}
+  }
+    \textbf{#1} & #2 & #3
+  \end{tabular*}\vspace{-2pt}
+}
+
+% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.96\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      #1
+    \end{tabular*}
+  }
+}
+
+% resumeQuadHeading renders four elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with four elements
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \small#3 & \small #4 \\
+  \end{tabular*}
+}
+
+% resumeQuadHeadingPlusOne renders five elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with five elements. First colum has three elements, second column has two elements. 
+\newcommand{\resumeQuadHeadingPlusOne}[5]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+    \textit{\small#5}
+  \end{tabular*}
+}
+
+% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
+\newcommand{\resumeQuadHeadingChild}[2]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}
+}
+
+% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.0in, label={}]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+%-------------------------------------------
+
+
+%__________________RESUME____________________
+\begin{document}
+
+%-----------CONTACT DETAILS------------------
+% Make sure all the details are correct, you can add more links in the first row of second column if needed
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Huge Kyle Schneider \vspace{2pt}} & % row = 1, col = 1
+  Location: Denver, CO \\ % row = 1, col = 2
+  \href{https://kvschneider.com/}{\uline{kvschneider.com}} $|$ % row = 2, col = 1
+  \href{https://www.linkedin.com/in/kyle-v-schneider/}{\uline{LinkedIn}} $|$ % row = 2, col = 1
+  \href{https://github.com/kvs247}{\uline{GitHub}} % row = 2, col = 1
+  \href{https://dev.to/kvs247}{\uline{}} & % row = 2, col = 1
+  Email: \href{mailto:kylesch115@gmail.com}{\uline{kylesch115@gmail.com}} $|$ % row = 2, col = 2
+  Mobile: 719-502-0701 \\ % row = 2, col = 2
+\end{tabular*}
+%--------------------------------------------
+
+
+%-----------SUMMARY--------------------------
+% Keep this short, simple and straigth to point
+
+\section{Software Developer}
+\small{
+    Full-stack software developer with strong foundations in scientific computing, combining expertise in JavaScript/TypeScript, React, Python, and C++ to deliver high-performance solutions. Experience architecting cloud applications using AWS services and working with both SQL and NoSQL databases. Focused on delivering maintainable, type-safe code while effectively communicating technical solutions to stakeholders.
+}
+%--------------------------------------------
+
+
+%--------------SKILLS------------------------
+\section{Technical Skills}
+\begin{tabularx}{\textwidth}{X X X X X X}
+    Frontend: & TypeScript & React & Redux & HTML & CSS \\
+    Backend: & Node.js & Python & C++ & AWS Lambda & CloudFormation \\
+    Databases: & PostgreSQL & DynamoDB & RDS & SQL & NoSQL \\
+    Dev Tools & Git & VS Code & Linux & tmux & Postman \\
+    Data Analysis: & NumPy & SciPy & Pandas & Matplotlib & ChartJS
+\end{tabularx}
+
+
+%-----------PROJECTS--------------------------
+% Use resumeQuadHeading if four elements are feasible (ex: demo video link), else use resumeTrioHeading. Keep the bullet points simple and concise and try to cover wide variety of skills you have used to build these projects
+
+\section{Projects}
+  \resumeHeadingListStart{}
+    \resumeTrioHeading{\textbf{CLI Chess Application} - \href{https://github.com/kvs247/chesspp}{\uline{GitHub}} \href{https://youtu.be/43IuuSmvnHs}{\uline{}} \href{https://dev.di6bue370azmc.amplifyapp.com/}{\uline{}}}
+    {}{}
+      \newline
+      - Object-oriented design following separation of responsibility principles
+      \newline
+      - Multi-threaded architecture for game clock and multiple modes of user input
+      \newline
+      - Implemented comprehensive test suite using Google Test framework, achieving full coverage of game logic
+
+    \resumeTrioHeading{\textbf{Fluid Dynamics Simulation} - \href{https://github.com/kvs247/adm-sim}{\uline{GitHub}}
+    \href{https://youtu.be/43IuuSmvnHs}{\uline{}} \href{https://dev.di6bue370azmc.amplifyapp.com/}{\uline{}}}
+    {}{}
+      \newline
+      - Fluid dynamics simulation utilizing C++ parallelism and STL algorithms for large-scale computations
+      \newline
+      - Graphical visualization of fluid flow using Simple DirectMedia Layer (SDL2)
+      \newline
+      - Translated complex mathematical models from academic papers into efficient C++ implementations
+
+  \resumeHeadingListEnd{}
+%--------------------------------------------
+
+%-----------EXPERIENCE-----------------------
+% Distill all your talking points to small bullet points which follow the pattern "challenge-action-result" for maximum efficiency. Try to quantify (use numbers) your points whenver possible, highlist words of importance
+
+\section{Experience}
+\resumeHeadingListStart{}
+
+  \resumeQuadHeading{Charter Communications, Denver, CO}{March 2025 -- Present}
+  {Systems Engineer}{}
+    \resumeItemListStart{}
+      \resumeItem{Designed, developed, and implemented enterprise-wide Operations Support Systems applications and their associated operating systems and databases.}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{Earthview, Denver, CO}{May 2023 -- December 2024}
+  {Software Engineer}{}
+    \resumeItemListStart{}
+      \resumeItem{Architected and developed full-stack features using AWS CloudFormation, Lambda, and RDS/DynamoDB, accelerating development time by owning end-to-end feature realization.}
+      \resumeItem{Designed and built data visualization tools that increased hardware performance visibility, enabling detection of critical system issues, and facilitating communicating complex datasets to customers.}
+      \resumeItem{Optimized computation-heavy simulations through C++ implementation, reducing runtime by over 95\% and substantially reducing cloud-compute costs.}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{ChampionX, Boulder, CO}{January 2022 -- September 2022}
+  {Data Analyst/Junior Flight Scientist}{}
+    \resumeItemListStart{}
+      \resumeItem{Spearheaded revival of legacy drone technology project through comprehensive documentation and experimental validation, securing \$500K in funding and 30\% resource allocation from senior science officers.}
+      \resumeItem{Improved experimental data analysis by implementing optimal algorithms for nonuniform time series processing and integration, resulting in significantly more accurate curve fitting and data visualization.}
+    \resumeItemListEnd{}
+
+\resumeHeadingListEnd{}
+
+%-----------EDUCATION-------------------------
+% Mention your CGPA, if its good, in the first row of second column
+
+\section{Education}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{Flatiron School, Remote}{January 2023 -- April 2023}
+    {Full Stack Web Development, Python and JavaScript program}{}
+    \resumeQuadHeadingPlusOne{University of Colorado, Boulder, CO}{August 2017 -- May 2021}
+    {Bachelor of Arts in Mathematics, \textit{magna cum laude}}{}{Bachelor of Arts in Physics}
+    % \resumeQuadHeading{Coronado High School}{Colorado Springs, CO}
+    % {}{Aug 2013 -- May 2017}
+  \resumeHeadingListEnd{}
+%---------------------------------------------
+
+\end{document}
